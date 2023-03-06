@@ -3,8 +3,11 @@
 
 import { bubleSort } from "../bubleSort.js";
 import { gridChallenge } from "../gridChallenge.js";
+import { heapSort } from "../heapSort.js";
 import { mergeSort } from "../mergeSort.js";
 import { palindromeIndex, palindromeIndex2 } from "../polipalabra.js";
+import { quickSort } from "../quickSort.js";
+import { radixSort } from "../radixSort.js";
 
 
 
@@ -26,10 +29,13 @@ function main() {
     // const result = gridChallenge(['kc',
     //     'iu'])
     // console.log(result);
-
-
-    const x = mergeSort([5, 4, 7, 1, 2, 4, 5])
+   const x = radixSort([54, 4333, 47, 1, 23, 443, 54311])
     console.log(x);
+
+}
+
+function suma(x){
+   return x+1;
 }
 
 main();
