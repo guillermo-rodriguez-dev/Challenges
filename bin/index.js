@@ -1,7 +1,9 @@
-// @ts-nocheck
 'use strict';
 
 import { bubleSort } from "../bubleSort.js";
+import { busquedaHash } from "../busquedaHash.js";
+import { busquedaLineal } from "../busquedaLineal.js";
+import { Grafica } from "../grafos.js";
 import { gridChallenge } from "../gridChallenge.js";
 import { heapSort } from "../heapSort.js";
 import { mergeSort } from "../mergeSort.js";
@@ -29,13 +31,22 @@ function main() {
     // const result = gridChallenge(['kc',
     //     'iu'])
     // console.log(result);
-   const x = radixSort([54, 4333, 47, 1, 23, 443, 54311])
-    console.log(x);
+    //    const x = busquedaHash([11, 72, 3, 14, 45, 6, 17], 33)
+    //     console.log(x);
+    const grafica = new Grafica();
+    const vertices = [0, 1, 2, 3, 4, 5, 6]
+    vertices.forEach(vertice => {
+        grafica.agregarVertice(vertice)
+    });
 
+    const aristas = [1,4,4,3,4,6,3,5,3,2,6,5,5,2]
+    for (let index = 0; index < aristas.length; index = index + 2) {
+        grafica.agregarArista(aristas[index], aristas[index + 1])
+    }
+    grafica.busquedaProfundidad(2)
+    console.log(grafica)
 }
 
-function suma(x){
-   return x+1;
-}
+
 
 main();
