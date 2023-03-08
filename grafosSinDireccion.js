@@ -22,7 +22,7 @@ class Vertice {
 }
 
 
-export class Grafica {
+export class GraficaSinDireccion {
     constructor() {
         this.vertices = {};
     }
@@ -66,16 +66,18 @@ export class Grafica {
 
         if (this.vertices.hasOwnProperty(x)) {
             this.vertices[x].visitado = true;
-                for (let index = 0; index < this.vertices[x].vecinos.length; index++) {
-                   
-                    if (!this.vertices[this.vertices[x].vecinos[index]].visitado) {
-                        this.vertices[this.vertices[x].vecinos[index]].padre = x;
-                        this.busquedaProfundidad(this.vertices[x].vecinos[index]);
-                    }
+            for (let index = 0; index < this.vertices[x].vecinos.length; index++) {
 
+                if (!this.vertices[this.vertices[x].vecinos[index]].visitado) {
+                    this.vertices[this.vertices[x].vecinos[index]].padre = x;
+                    this.busquedaProfundidad(this.vertices[x].vecinos[index]);
                 }
-            
+
+            }
+
         }
 
     }
+
+ 
 }
