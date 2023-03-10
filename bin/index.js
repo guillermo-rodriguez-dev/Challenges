@@ -64,8 +64,8 @@ function main() {
     grafica.agregarArista(3, 6, 2)
     grafica.agregarArista(4, 5, 6)
     grafica.agregarArista(5, 6, 9)
-    grafica.bellmanFord(1)
-    console.log(grafica.buscarCamino(1,6));
+    grafica.dijkstra(1)
+    console.log(grafica.buscarCaminoDijkstra(1,6));
 
 }
 

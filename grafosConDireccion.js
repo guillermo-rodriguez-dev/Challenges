@@ -41,65 +41,29 @@ export class GraficaConDireccion {
         }
     }
 
-    busquedaExpansion(x) {
-        let cola = []
-        if (this.vertices.hasOwnProperty(x)) {
 
-            this.vertices[x].visitado = true;
-            this.vertices[x].nivel = 0;
-            cola.push(this.vertices[x]);
-            while (cola.length > 0) {
-                let actual = cola.shift();
-                actual.vecinos.forEach(vecino => {
-                    if (!this.vertices[vecino].visitado) {
-                        cola.push(this.vertices[vecino]);
-                        this.vertices[vecino].visitado = true;
-                        this.vertices[vecino].nivel = actual.nivel + 1;
-                    }
-                });
-            }
-        }
-        return this.vertices;
 
-    }
-
-    busquedaProfundidad(x) {
-
-        if (this.vertices.hasOwnProperty(x)) {
-            this.vertices[x].visitado = true;
-            for (let index = 0; index < this.vertices[x].vecinos.length; index++) {
-
-                if (!this.vertices[this.vertices[x].vecinos[index]].visitado) {
-                    this.vertices[this.vertices[x].vecinos[index]].padre = x;
-                    this.busquedaProfundidad(this.vertices[x].vecinos[index]);
-                }
-
-            }
-
-        }
-
-    }
-
-    buscarCamino(x, y) {
+    buscarCaminoDijkstra(x, y) {
         let camino = [];
         let actual = y
-        while (actual) {
+        let distancia = 0;
+        while (actual != null) {
             camino.unshift(actual);
-            actual = this.vertices[actual].padre ?? undefined;
+            actual = this.vertices[actual].padre;
         }
-        let distancia = camino.reduce((accumulator, currentValue) => this.vertices[accumulator].distancia + currentValue,)
-        return [camino, distancia];
+
+        return [camino, this.vertices[y].distancia];
     }
 
     bellmanFord(x) {
         if (this.vertices.hasOwnProperty(x)) {
             this.vertices[x].distancia = 0;
-            
+
             for (const key in this.vertices) {
                 if (Object.hasOwnProperty.call(this.vertices, key)) {
                     const element = this.vertices[key];
                     if (element.id !== x) {
-                        this.vertices[key].distancia = 99999999999
+                        this.vertices[key].distancia = Number.POSITIVE_INFINITY
                         this.vertices[key].predesesor = null
                     }
                 }
@@ -109,22 +73,101 @@ export class GraficaConDireccion {
                 if (Object.hasOwnProperty.call(this.vertices, key)) {
                     const element = this.vertices[key];
                     element.vecinos.forEach((arista) => {
-                        let distancia =  this.vertices[arista[0]].distancia
+                        let distancia = this.vertices[arista[0]].distancia
 
-                        if ((element.distancia + arista[1]) <distancia) {
+                        if ((element.distancia + arista[1]) < distancia) {
                             this.vertices[arista[0]].distancia = element.distancia + arista[1];
                             this.vertices[arista[0]].padre = element.id
-    
+
                         }
                     })
 
-                  
+
                 }
             }
 
 
 
-         
+
         }
+        else {
+            console.error("No se encuentra el elemento buscado")
+            return false
+        }
+    }
+
+
+    dijkstra(x) {
+        if (this.vertices.hasOwnProperty(x)) {
+            this.vertices[x].distancia = 0;
+            this.vertices[x].visitado = false;
+            let actual = x
+            let noVisitados = [];
+            for (const key in this.vertices) {
+                if (Object.hasOwnProperty.call(this.vertices, key)) {
+                    const element = this.vertices[key];
+                    if (element.id !== actual) {
+                        this.vertices[key].distancia = Number.POSITIVE_INFINITY
+                        this.vertices[key].visitado = false;
+                    }
+                    this.vertices[key].padre = null
+
+                    noVisitados.push(this.vertices[key].id)
+
+                }
+            }
+
+            while (noVisitados.length > 0) {
+                const element = this.vertices[actual];
+                element.vecinos.forEach((arista) => {
+                    if (this.vertices[arista[0]].visitado === false) {
+
+
+                        let distancia = this.vertices[arista[0]].distancia
+
+                        if ((element.distancia + arista[1]) < distancia) {
+                            this.vertices[arista[0]].distancia = element.distancia + arista[1];
+                            this.vertices[arista[0]].padre = element.id
+
+                        }
+                    }
+
+
+
+                })
+                this.vertices[actual].visitado = true
+
+                const index = noVisitados.indexOf(actual);
+                noVisitados.splice(index, 1);
+                actual = this.dijkstraMinimaDistancia(noVisitados)
+
+            }
+
+        }
+        else {
+            console.error("No se encuentra el elemento buscado")
+            return false
+        }
+    }
+
+    dijkstraMinimaDistancia(x) {
+        if (x.length > 0) {
+            let menotDistancia = Number.POSITIVE_INFINITY;
+            let elementoConMenorDistancia;
+
+            x.forEach((y) => {
+                const element = this.vertices[y];
+                if (element.distancia < menotDistancia) {
+                    menotDistancia = element.distancia;
+                    elementoConMenorDistancia = element.id;
+                }
+            })
+
+
+
+
+            return elementoConMenorDistancia;
+        }
+
     }
 }

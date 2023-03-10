@@ -11,7 +11,6 @@ class Vertice {
         this.visitado = visitado;
         this.nivel = nivel;
         this.vecinos = vecinos;
-
     }
 
     agregarVecino(vertice) {
@@ -26,7 +25,6 @@ export class GraficaSinDireccion {
     constructor() {
         this.vertices = {};
     }
-
     agregarVertice(vertice) {
         if (!this.vertices.hasOwnProperty(vertice)) {
             this.vertices[vertice] = new Vertice(vertice)
@@ -59,7 +57,6 @@ export class GraficaSinDireccion {
             }
         }
         return this.vertices;
-
     }
 
     busquedaProfundidad(x) {
