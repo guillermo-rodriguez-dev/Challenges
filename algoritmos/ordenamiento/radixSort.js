@@ -1,5 +1,7 @@
 
-
+// La idea básica del algoritmo Radix sort es considerar que las claves están formadas por dıgitos. Ası, para ordenar las claves, 
+// el método las ordena por cada uno de sus dıgitos, 
+// de menos peso a más peso. A cada ordenación de las claves por un dıgito se le llamará iteración.
 
 
 export const radixSort = function (list) {

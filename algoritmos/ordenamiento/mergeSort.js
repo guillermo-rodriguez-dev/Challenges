@@ -1,5 +1,7 @@
 
-
+// El método Merge Sort consiste en partir una estructura en mitades, 
+// ordenar cada mitad y luego intercalar ordenadamente ambas mitades. 
+// Cada mitad se ordena aplicando el mismo método.
 
 export const mergeSort = function (x) {
 

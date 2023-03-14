@@ -1,15 +1,6 @@
 'use strict';
-
-import { bubleSort } from "../bubleSort.js";
-import { busquedaHash } from "../busquedaHash.js";
-import { busquedaLineal } from "../busquedaLineal.js";
-import { GraficaConDireccion } from "../grafosConDireccion.js";
-import { gridChallenge } from "../gridChallenge.js";
-import { heapSort } from "../heapSort.js";
-import { mergeSort } from "../mergeSort.js";
-import { palindromeIndex, palindromeIndex2 } from "../polipalabra.js";
-import { quickSort } from "../quickSort.js";
-import { radixSort } from "../radixSort.js";
+import { newYearChaos } from "../newYearChaos.js";
+import { recursiveDigitSum } from "../recursiveDigitSum.js";
 
 
 
@@ -47,26 +38,49 @@ function main() {
     // console.log(grafica)
 
 
-    let grafica = new GraficaConDireccion();
-    grafica.agregarVertice(1);
-    grafica.agregarVertice(2);
-    grafica.agregarVertice(3);
-    grafica.agregarVertice(4);
-    grafica.agregarVertice(5);
-    grafica.agregarVertice(6);
+    // let grafica = new GraficaConDireccion();
+    // grafica.agregarVertice(1);
+    // grafica.agregarVertice(2);
+    // grafica.agregarVertice(3);
+    // grafica.agregarVertice(4);
+    // grafica.agregarVertice(5);
+    // grafica.agregarVertice(6);
 
-    grafica.agregarArista(1, 6, 14)
-    grafica.agregarArista(1, 2, 7)
-    grafica.agregarArista(1, 3, 9)
-    grafica.agregarArista(2, 3, 10)
-    grafica.agregarArista(2, 4, 15)
-    grafica.agregarArista(3, 4, 11)
-    grafica.agregarArista(3, 6, 2)
-    grafica.agregarArista(4, 5, 6)
-    grafica.agregarArista(5, 6, 9)
-    grafica.dijkstra(1)
-    console.log(grafica.buscarCaminoDijkstra(1,6));
+    // grafica.agregarArista(1, 6, 14)
+    // grafica.agregarArista(1, 2, 7)
+    // grafica.agregarArista(1, 3, 9)
+    // grafica.agregarArista(2, 3, 10)
+    // grafica.agregarArista(2, 4, 15)
+    // grafica.agregarArista(3, 4, 11)
+    // grafica.agregarArista(3, 6, 2)
+    // grafica.agregarArista(4, 5, 6)
+    // grafica.agregarArista(5, 6, 9)
+    // grafica.dijkstra(1)
+    // console.log(grafica.buscarCaminoDijkstra(1,6));
 
+
+    // let grafica = new GraficaConDireccion();
+    // grafica.agregarVertice(1,55);
+    // grafica.agregarVertice(2, 20);
+    // grafica.agregarVertice(3, 30);
+    // grafica.agregarVertice(4, 15);
+    // grafica.agregarVertice(5, 78);
+    // grafica.agregarVertice(6, 90);
+
+    // grafica.agregarArista(1, 6, 14)
+    // grafica.agregarArista(1, 2, 7)
+    // grafica.agregarArista(1, 3, 9)
+    // grafica.agregarArista(2, 3, 10)
+    // grafica.agregarArista(2, 4, 15)
+    // grafica.agregarArista(3, 4, 11)
+    // grafica.agregarArista(3, 6, 2)
+    // grafica.agregarArista(4, 5, 6)
+    // grafica.agregarArista(5, 6, 9)
+    // console.log(grafica.aEstrella(1,6));
+    // const x = recursiveDigitSum(123  , 3)
+    // console.log(x);
+    newYearChaos([2, 5, 1, 3, 4
+    ])
 }
 
 
